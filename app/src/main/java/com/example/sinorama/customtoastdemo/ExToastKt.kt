@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import java.lang.reflect.Field
-import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 
 /**
@@ -24,8 +22,6 @@ class ExToastKt(context: Context) {
     var mTN: Any? = null
     var show: Method? = null
     var hide: Method? = null
-
-
 
     companion object {//创建一个静态区来实现静态方法
 
@@ -50,14 +46,10 @@ class ExToastKt(context: Context) {
         val LENGTH_SHORT = 2//2秒显示
         val LENGTH_LONG = 4//4秒显示
 
-
-
     }
 
-
-
     private val mHide = Runnable { hide() }
-    private var handler: Handler? = null
+    private var handler: Handler = Handler()
 
 
     fun show() {
@@ -68,7 +60,8 @@ class ExToastKt(context: Context) {
 
 
         if (mDuration > LENGTH_ALWAYS) {
-            handler?.postDelayed(mHide, (mDuration * 1000).toLong())
+            //handler?.postDelayed(mHide, (mDuration * 1000).toLong())
+            handler?.postDelayed(mHide, mDuration.toLong())
         }
 
     }
@@ -98,8 +91,8 @@ class ExToastKt(context: Context) {
             tnTextViewField?.isAccessible = true
 
             //用mTN改变mNextView的逻辑
-            tnTextViewField?.set(mTN, mToast?.getView());//修改mTN对象
-            //tnTextViewField?.set(mTN, mNextView)//修改mTN对象和view
+            //tnTextViewField?.set(mTN, mToast?.getView());//修改mTN对象
+            tnTextViewField?.set(mTN, mNextView)//修改mTN对象和view
 
     }
 

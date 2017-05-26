@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.button1)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExToast.makeText(MainActivity.this, "Hello, customTost", ExToast.LENGTH_LONG).show();
+                ExToast.makeText(MainActivity.this, "Hello, customTost-java", ExToast.LENGTH_LONG).show();
                 //Toast.makeText(MainActivity.this, "This is native Toast", Toast.LENGTH_LONG).show();
             }
         });
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.button2)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExToastKt.Companion.makeText( MainActivity.this, "Hello, customTost", ExToastKt.Companion.getLENGTH_LONG()).show();
-                //Toast.makeText(MainActivity.this, "This is native Toast", Toast.LENGTH_LONG).show();
+                //ExToastKt.Companion.makeText( MainActivity.this, "Hello, customTost-Kotlin", ExToastKt.Companion.getLENGTH_LONG()).show();
+                ExToastKt.Companion.makeText( MainActivity.this, "Hello, customTost-Kotlin", 1000).show();
             }
         });
     }
